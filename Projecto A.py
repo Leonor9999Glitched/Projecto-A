@@ -14,40 +14,52 @@ escolha = int(input("Sua escolha > "))
 
 if(escolha == 1):
 
-    print("Escolheste ver a imersão num fluido")
+    print("Escolheste ver a imersão num fluido.")
+    print("O objectivo desta opcção é ver qual o volume que fica submerso no liquido quando sistema entrar em equilibrio.")
+    print("Para tal a força gravitica é igual à força de buoyancy.")
     while(sair  != "2"):
-        print("Por favor, diga quais os valores do seguintes parametros")
+        print("")
+        print("Por favor, diga quais os valores do seguintes parametros.")
         gravity = input("Gravidade > ")
         densidade1 = input("Densidade do fluído > ")
         densidade2 = input("Densidade do objecto > ")
         volume = input("Volume do cubo > ")
-        
-        f = float(densidade1) * float(gravity) * float(volume)
-        
-        massa_do_objecto = float(densidade2) * float(volume)
 
-        fg = float(massa_do_objecto) * float(gravity)
+        massa_do_objecto = float(densidade2) * float(volume) #Massa do objecto
 
-        if(fg > f):
-            print("Força do objecto é " + str(f))
-            print("Força da gravidade é = " + str(fg))
-            print("Força do objecto é maior do que " + str(f) + "logo o objecto afundu-se")
-            print("Repetir?")
-            print("1 - Repetir")
-            print("2 - Sair")
-            sair = input()
+        fg = float(massa_do_objecto) * float(gravity) #Força gravitica
 
-        if(fg < f):
-            print("O objecto está flutauar.")
-            print("Repetir?")
-            print("1 - Repetir")
-            print("2 - Sair")
-            sair = input()
+        print("A força gravitica é > " + str(fg))
+        print("A massa do objecto é > " + str(massa_do_objecto))
+        print("")
+        print("Para o objecto ficar a flutuar, a força gravitica tem que ser igual à força de buoyancy.")
+        print("Para isso temos que descobrir o volume da formula da força bouyancy.")
+        print("")
+
+        volume_buoyancy = float(fg) / (float(densidade1) * float(gravity))  #Calcular o calado ou o que fica por debaixo do liquid
+
+        print("Este é o volume de buoyancy > " + str(volume_buoyancy))
+        print("Ou seja, o objecto fica a submerso > " + str(volume_buoyancy) + " metros.")
+        print("")
+
+        print("Deseja continuar?")
+        print("1 - Repetir")
+        print("2 - Sair")
+        sair = input()
+
+        if(sair == "2"):
+            print("Escolheste sair.")
+            print("Adeus!")
+
 
 if(escolha == 2):
 
     print("Escolheste ver os calculos relacionados com as molas")
+    print("")
+    print("O objectivo desta opcção é ver o comprimento da mola, após o sistema estar em equilibrio")
+    print("A força gravitica é igual à força da mola.")
     while(sair  != "2"):
+        print("Por favor, diga quais os valores do seguintes parametros.")
         gravity = input("Gravity > ")
         massa = input("Massa > ")
         repouso = input("Repouso > ")
@@ -55,7 +67,7 @@ if(escolha == 2):
 
         fg = float(massa) * float(gravity)
 
-        l = (fg + (float(const_mola) * float(repouso))) / float(const_mola)
+        l = (-fg - (float(const_mola) * float(repouso))) / -float(const_mola)
 
         print("Este é o comprimento da mola > " + str(l))
 
@@ -63,6 +75,10 @@ if(escolha == 2):
         print("1 - Repetir")
         print("2 - Sair")
         sair = input()
+
+        if(sair == "2"):
+            print("Escolheste sair.")
+            print("Adeus!")
 
 
 
